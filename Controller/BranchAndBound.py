@@ -10,7 +10,7 @@ sys.path.append(os.path.join(sys.path[0].replace('Controller',''), 'Models\\'))
 from Nodes import Nodes as Model_Nodes
 from Rules import Rules
 
-class BranchAndBbound:
+class BranchAndBound:
     def __init__(self):
         self.node = None
     
@@ -205,5 +205,5 @@ class BranchAndBbound:
 
 
 if __name__ == "__main__":
-    method = BranchAndBbound()
+    method = BranchAndBound()
     method.doCalculation()
