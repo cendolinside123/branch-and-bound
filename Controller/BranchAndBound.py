@@ -95,7 +95,7 @@ class BranchAndBound:
                     getMaxValue = 'x'
 
                 elif self.number_of_digits_post_decimal(getParentValue['x']) == None and self.number_of_digits_post_decimal(getParentValue['y']) != None :
-                    getMinValue = 'y'
+                    getMaxValue = 'y'
 
             # if self.number_of_digits_post_decimal(getParentValue[getMinValue]) == None :
             #     if getMinValue == 'x' : 
