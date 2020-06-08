@@ -40,16 +40,16 @@ class Rules:
         else:
             Rules.__instance = self
 
-        self.valueOfX = 100
-        self.valueOfY = 150
+        self.valueOfX = 5
+        self.valueOfY = 6
 
-        self.valueOfX_firstRule = 8000
-        self.valueOfY_firstRule = 4000
-        self.totalValue_firstRule = 40000
+        self.valueOfX_firstRule = 1
+        self.valueOfY_firstRule = 1
+        self.totalValue_firstRule = 5
 
-        self.valueOfX_secondRule = 15
-        self.valueOfY_secondRule = 30
-        self.totalValue_secondRule = 200
+        self.valueOfX_secondRule = 4
+        self.valueOfY_secondRule = 7
+        self.totalValue_secondRule = 28
 
 if __name__ == "__main__":
     print(Rules.getInstance().valueOfX)

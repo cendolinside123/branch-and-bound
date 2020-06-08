@@ -83,6 +83,8 @@ class BranchAndBound:
         parrentNode = 0
         startGetConstraintFrom = "y"
 
+        listOfPosibleValueNode = dict()
+
         while doLoopForCreateTree :
 
             getParentValue = {'x':self.node.getValueOfSelectedNode(parrentNode)['x'],'y':self.node.getValueOfSelectedNode(parrentNode)['y']}
@@ -156,6 +158,13 @@ class BranchAndBound:
                 else :
                     self.node.setNodesLeft(numberOfChildNode + 1,getX_Value_left,getY_Value_left,getZ_Value_left,parrentNode)
             
+
+            if self.node.getValueOfSelectedNode(numberOfChildNode + 1)['status'] != "infeasible" and self.number_of_digits_post_decimal(getZ_Value_left) == None :
+                listOfPosibleValueNode[numberOfChildNode + 1] = self.node.getValueOfSelectedNode(numberOfChildNode + 1)['z']
+            
+            if self.node.getValueOfSelectedNode(numberOfChildNode)['status'] != "infeasible" and self.number_of_digits_post_decimal(getZ_Value_right) == None :
+                listOfPosibleValueNode[numberOfChildNode] = self.node.getValueOfSelectedNode(numberOfChildNode)['z']
+
             if getZ_Value_right > getZ_Value_left :
 
                 if self.node.getValueOfSelectedNode(numberOfChildNode + 1)['status'] != "infeasible" and self.number_of_digits_post_decimal(getZ_Value_left) != None:
@@ -192,7 +201,16 @@ class BranchAndBound:
 
 
         self.node.showDetail()
-    
+
+        getNode = max(listOfPosibleValueNode.keys(), key=(lambda k: listOfPosibleValueNode[k]))
+        print("node yang memenuhi persyaratan adalah: \n")
+        print("Number of node: " + str(self.node.getValueOfSelectedNode(getNode)['NumberNode']))
+        print("X value: " + str(self.node.getValueOfSelectedNode(getNode)['x']))
+        print("Y value: " + str(self.node.getValueOfSelectedNode(getNode)['y']))
+        print("Z value: " + str(self.node.getValueOfSelectedNode(getNode)['z']))
+        print("Status: " + str(self.node.getValueOfSelectedNode(getNode)['status']))
+        #print("posible no node :" + str(listOfPosibleValueNode))
+
     def number_of_digits_post_decimal(self,x):  
         count = 0  
         residue = x -int(x)  
